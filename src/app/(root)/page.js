@@ -3,12 +3,14 @@
 import styled from "styled-components";
 import { Hero } from "../sections/Hero";
 import { Header } from "../components/Header";
+import { Counting } from "../sections/Counting";
 
 export default function Home() {
   return (
     <DisplayWrapper>
       <Header />
       <Hero />
+      <Counting />
     </DisplayWrapper>
   );
 }

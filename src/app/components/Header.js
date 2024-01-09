@@ -22,7 +22,7 @@ export const Header = () => {
 
 const DisplayWrapper = styled.div`
   width: 850px;
-  position: absolute;
+  position: fixed;
   top: 8%;
   left: 50%;
   transform: translateX(-50%);
