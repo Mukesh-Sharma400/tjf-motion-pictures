@@ -98,7 +98,7 @@ const DisplayWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 50px 0;
   background-color: black;
   transition: all 0.5s ease-in-out;
