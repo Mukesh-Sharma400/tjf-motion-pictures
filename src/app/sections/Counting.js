@@ -1,93 +1,40 @@
+import CountUp from "react-countup";
 import styled from "styled-components";
-import React, { useState, useEffect, useRef } from "react";
-
-const useCountingEffect = (targetCount, startCounting) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let currentCount = count;
-    const interval = setInterval(() => {
-      if (currentCount < targetCount && startCounting) {
-        currentCount += 1;
-        setCount(currentCount);
-      } else {
-        clearInterval(interval);
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, [count, targetCount, startCounting]);
-  return count;
-};
+import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 export const Counting = () => {
-  const awardRef = useRef(null);
-  const filmRef = useRef(null);
-  const countryRef = useRef(null);
-  const [startCounting, setStartCounting] = useState(false);
-
-  const handleIntersection = (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setStartCounting(true);
-      }
-    });
-  };
+  const [isVisible, setIsVisible] = useState(false);
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+  });
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
-
-    const awardObserver = new IntersectionObserver(
-      handleIntersection,
-      observerOptions
-    );
-    const filmObserver = new IntersectionObserver(
-      handleIntersection,
-      observerOptions
-    );
-    const countryObserver = new IntersectionObserver(
-      handleIntersection,
-      observerOptions
-    );
-
-    if (awardRef.current) {
-      awardObserver.observe(awardRef.current);
+    if (inView) {
+      setIsVisible(true);
     }
-    if (filmRef.current) {
-      filmObserver.observe(filmRef.current);
-    }
-    if (countryRef.current) {
-      countryObserver.observe(countryRef.current);
-    }
-
-    return () => {
-      awardObserver.disconnect();
-      filmObserver.disconnect();
-      countryObserver.disconnect();
-    };
-  }, []);
-
-  const awardCount = useCountingEffect(20, startCounting);
-  const filmCount = useCountingEffect(10, startCounting);
-  const countryCount = useCountingEffect(100, startCounting);
+  }, [inView]);
 
   return (
-    <DisplayWrapper>
-      <ContentWrapper ref={awardRef}>
-        <Number>{awardCount}+</Number>
+    <DisplayWrapper ref={ref}>
+      <ContentWrapper>
+        <Number>
+          {isVisible ? <CountUp start={0} end={20} duration={5} /> : "0"}+
+        </Number>
         <Label>Awards</Label>
       </ContentWrapper>
       <Divider />
-      <ContentWrapper ref={filmRef}>
-        <Number>{filmCount}+</Number>
+      <ContentWrapper>
+        <Number>
+          {isVisible ? <CountUp start={0} end={10} duration={5} /> : "0"}+
+        </Number>
         <Label>Films</Label>
       </ContentWrapper>
       <Divider />
-      <ContentWrapper ref={countryRef}>
-        <Number>{countryCount}+</Number>
+      <ContentWrapper>
+        <Number>
+          {isVisible ? <CountUp start={0} end={100} duration={5} /> : "0"}+
+        </Number>
         <Label>Countries</Label>
       </ContentWrapper>
     </DisplayWrapper>
@@ -112,6 +59,7 @@ const Divider = styled.div`
 `;
 
 const ContentWrapper = styled.div`
+  width: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,6 +76,6 @@ const Number = styled.p`
 
 const Label = styled.p`
   font-size: 20px;
-  color: white;
+  color: grey;
   transition: all 0.5s ease-in-out;
 `;

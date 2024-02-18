@@ -6,7 +6,22 @@ import { Providers } from "./providers";
 
 export const metadata = {
   title: "TJF Motion Pictures",
-  description: "",
+  description:
+    "Elevating Short Filmmaking to Art: Our Dedicated Team of Writers, Actors, Technicians, and Storytellers Craft Compelling Narratives with Precision and Passion.",
+  keywords:
+    "short films, filmmaking, storytelling, cinematography, film production",
+  author: "Mukesh Sharma",
+  image: "./icon.png",
+  url: "https://tjf-motion-pictures.vercel.app",
+  type: "website",
+  ogTitle: "TJF Motion Pictures",
+  ogDescription:
+    "Elevating Short Filmmaking to Art: Our Dedicated Team of Writers, Actors, Technicians, and Storytellers Craft Compelling Narratives with Precision and Passion.",
+  ogImage: "./icon.png",
+  twitterTitle: "TJF Motion Pictures",
+  twitterDescription:
+    "Elevating Short Filmmaking to Art: Our Dedicated Team of Writers, Actors, Technicians, and Storytellers Craft Compelling Narratives with Precision and Passion.",
+  twitterImage: "./icon.png",
 };
 
 export default function Layout({ children }) {
