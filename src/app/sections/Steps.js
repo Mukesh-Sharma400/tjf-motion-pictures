@@ -4,7 +4,7 @@ export const Steps = () => {
   return (
     <DisplayWrapper>
       <LeftSide>
-        <p>From Concept To Completion: We've Got You Covered!</p>
+        <p>From Concept To Completion: Covered Every Step of the Way!</p>
         <button>Explore Services</button>
       </LeftSide>
       <StepsWrapper>

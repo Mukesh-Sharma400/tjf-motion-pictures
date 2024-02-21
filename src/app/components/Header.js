@@ -11,6 +11,7 @@ export const Header = () => {
         <Name>TJF Motion Pictures</Name>
       </LogoNameWrapper>
       <RoutesWrapper>
+        <Route href="/">Home</Route>
         <Route href="/">Filmography</Route>
         <Route href="/">Gallery</Route>
         <Route href="/">Media</Route>
