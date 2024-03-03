@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
 import logo from "../../../public/assets/logo.jpg";
 
@@ -12,7 +12,6 @@ export const Footer = () => {
           <Name>TJF Motion Pictures</Name>
         </LogoNameWrapper>
         <Description>
-          {" "}
           Elevating Short Filmmaking to Art: Our Dedicated Team of Writers,
           Actors, Technicians, and Storytellers Craft Compelling Narratives with
           Precision and Passion.
@@ -22,9 +21,9 @@ export const Footer = () => {
         <PagesHeading>Pages</PagesHeading>
         <PagesWrapper>
           <Page href="/">Home</Page>
-          <Page href="/">Filmography</Page>
-          <Page href="/">Gallery</Page>
-          <Page href="/">Media</Page>
+          <Page href="/filmography">Filmography</Page>
+          <Page href="/gallery">Gallery</Page>
+          <Page href="/media">Media</Page>
         </PagesWrapper>
       </RightSide>
     </DisplayWrapper>

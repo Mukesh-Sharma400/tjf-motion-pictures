@@ -12,9 +12,9 @@ export const Header = () => {
       </LogoNameWrapper>
       <RoutesWrapper>
         <Route href="/">Home</Route>
-        <Route href="/">Filmography</Route>
-        <Route href="/">Gallery</Route>
-        <Route href="/">Media</Route>
+        <Route href="/filmography">Filmography</Route>
+        <Route href="/gallery">Gallery</Route>
+        <Route href="/media">Media</Route>
         <ContactBtn>Let's Talk</ContactBtn>
       </RoutesWrapper>
     </DisplayWrapper>

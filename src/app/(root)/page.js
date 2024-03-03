@@ -1,26 +1,16 @@
 "use client";
 
-import styled from "styled-components";
 import { Hero } from "../sections/Hero";
 import { Steps } from "../sections/Steps";
-import { Header } from "../components/Header";
 import { Counting } from "../sections/Counting";
-import { Footer } from "../components/Footer";
+import BaseLayout from "../components/BaseLayout";
 
 export default function Home() {
   return (
-    <DisplayWrapper>
-      <Header />
+    <BaseLayout>
       <Hero />
       <Counting />
       <Steps />
-      <Footer />
-    </DisplayWrapper>
+    </BaseLayout>
   );
 }
-
-const DisplayWrapper = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-  transition: all 0.5s ease-in-out;
-`;
