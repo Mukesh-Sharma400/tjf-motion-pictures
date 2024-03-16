@@ -4,6 +4,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  background: black !important;
+}
+
 h1,
 h2,
 h3,
