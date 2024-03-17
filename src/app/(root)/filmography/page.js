@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import styled from "styled-components";
 import BaseLayout from "../../components/BaseLayout";
 
@@ -16,7 +17,7 @@ export default function Filmography() {
         </Header>
       </HeaderWrapper>
       <FilmsWrapper>
-        <Film>
+        <Film href="/filmography/brief-case">
           <FilmImage></FilmImage>
           <FilmHeading>
             A Brief Case - A Hindi, Thriller Short Film | some secrets can kill
@@ -29,7 +30,7 @@ export default function Filmography() {
             dark intended mission? And what is so important in that briefcase?
           </FilmDescription>
         </Film>
-        <Film>
+        <Film href="/filmography/brief-case">
           <FilmImage></FilmImage>
           <FilmHeading>
             A Brief Case - A Hindi, Thriller Short Film | some secrets can kill
@@ -42,7 +43,7 @@ export default function Filmography() {
             dark intended mission? And what is so important in that briefcase?
           </FilmDescription>
         </Film>
-        <Film>
+        <Film href="/filmography/brief-case">
           <FilmImage></FilmImage>
           <FilmHeading>
             A Brief Case - A Hindi, Thriller Short Film | some secrets can kill
@@ -55,7 +56,7 @@ export default function Filmography() {
             dark intended mission? And what is so important in that briefcase?
           </FilmDescription>
         </Film>
-        <Film>
+        <Film href="/filmography/brief-case">
           <FilmImage></FilmImage>
           <FilmHeading>
             A Brief Case - A Hindi, Thriller Short Film | some secrets can kill
@@ -113,7 +114,7 @@ const FilmsWrapper = styled.div`
   gap: 3rem;
 `;
 
-const Film = styled.div`
+const Film = styled(Link)`
   width: 400px;
   height: fit-content;
   display: flex;
@@ -123,6 +124,7 @@ const Film = styled.div`
   border: 2px solid grey;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
+  text-decoration: none;
 `;
 
 const FilmImage = styled.div`
