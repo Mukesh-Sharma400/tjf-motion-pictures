@@ -24,7 +24,7 @@ export const Header = () => {
 const DisplayWrapper = styled.div`
   width: 850px;
   position: fixed;
-  top: 8%;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
