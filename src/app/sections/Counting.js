@@ -18,21 +18,21 @@ export const Counting = () => {
   return (
     <DisplayWrapper ref={ref}>
       <ContentWrapper>
-        <Number>
+        <Number data-aos="fade-up">
           {isVisible ? <CountUp start={0} end={20} duration={5} /> : "0"}+
         </Number>
         <Label>Awards</Label>
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number>
+        <Number data-aos="fade-up">
           {isVisible ? <CountUp start={0} end={10} duration={5} /> : "0"}+
         </Number>
         <Label>Films</Label>
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number>
+        <Number data-aos="fade-up">
           {isVisible ? <CountUp start={0} end={100} duration={5} /> : "0"}+
         </Number>
         <Label>Countries</Label>

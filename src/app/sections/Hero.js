@@ -10,13 +10,15 @@ export const Hero = () => {
         <Overlay />
       </BackgroundImageWrapper>
       <ContentWrapper>
-        <Heading>Transforming Visions into Cinematic Realities</Heading>
-        <Description>
-          Elevating Short Filmmaking to Art: Our Dedicated Team of Writers,
-          Actors, Technicians, and Storytellers Craft Compelling Narratives with
-          Precision and Passion.
-        </Description>
-        <Button>See Projects</Button>
+        <InnerContentWrapper data-aos="fade-up">
+          <Heading>Transforming Visions into Cinematic Realities</Heading>
+          <Description>
+            Elevating Short Filmmaking to Art: Our Dedicated Team of Writers,
+            Actors, Technicians, and Storytellers Craft Compelling Narratives
+            with Precision and Passion.
+          </Description>
+          <Button>See Movies</Button>
+        </InnerContentWrapper>
       </ContentWrapper>
     </DisplayWrapper>
   );
@@ -61,6 +63,17 @@ const ContentWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  transition: all 0.5s ease-in-out;
+`;
+
+const InnerContentWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

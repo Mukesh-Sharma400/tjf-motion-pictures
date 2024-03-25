@@ -1,20 +1,38 @@
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
+import { usePathname } from "next/navigation";
 import logo from "../../../public/assets/logo.jpg";
 
 export const Header = () => {
+  const pathName = usePathname();
+
+  const routesData = [
+    { path: "/", label: "Home" },
+    { path: "/filmography", label: "Filmography" },
+    { path: "/gallery", label: "Gallery" },
+    { path: "/media", label: "Media" },
+  ];
+
   return (
     <DisplayWrapper>
       <LogoNameWrapper>
         <Logo src={logo} alt="TJF Motion Pictures" />
-        <Name>TJF Motion Pictures</Name>
+        <Name data-aos="fade-right">TJF Motion Pictures</Name>
       </LogoNameWrapper>
       <RoutesWrapper>
-        <Route href="/">Home</Route>
-        <Route href="/filmography">Filmography</Route>
-        <Route href="/gallery">Gallery</Route>
-        <Route href="/media">Media</Route>
+        {routesData.map((page, index) => (
+          <Route
+            key={index}
+            href={page.path}
+            className={pathName === page.path ? "active" : ""}
+            data-aos="fade-left"
+            data-aos-delay={`${(index + 1) * 100}`}
+          >
+            {page.label}
+          </Route>
+        ))}
+
         <ContactBtn>Let's Talk</ContactBtn>
       </RoutesWrapper>
     </DisplayWrapper>
@@ -70,10 +88,42 @@ const RoutesWrapper = styled.div`
 `;
 
 const Route = styled(Link)`
+  position: relative;
   font-size: 16px;
   color: white;
   text-decoration: none;
-  transition: all 0.5s ease-in-out;
+  padding-bottom: 3px;
+
+  @media (max-width: 1024px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: white;
+    width: 0;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+
+  &.active {
+    font-weight: 600;
+    &::before {
+      width: 100%;
+      background-color: white;
+    }
+  }
 `;
 
 const ContactBtn = styled.button`

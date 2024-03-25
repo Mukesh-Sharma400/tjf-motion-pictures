@@ -7,7 +7,7 @@ export default function Gallery() {
   return (
     <BaseLayout>
       <HeaderWrapper>
-        <Header>
+        <Header data-aos="fade-up">
           <Heading>Gallery</Heading>
           <Description>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi vero
@@ -21,7 +21,7 @@ export default function Gallery() {
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  height: 400px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,11 @@ const HeaderWrapper = styled.div`
 
 const Header = styled.div`
   width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   text-align: center;
+  margin-top: 50px;
   transition: all 0.5s ease-in-out;
 `;
 

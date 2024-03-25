@@ -1,10 +1,66 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect } from "react";
 import styled from "styled-components";
 import logo from "../../../public/assets/logo.jpg";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    const tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    const tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => {
+      return new window.bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  }, []);
+
+  const socialLinks = [
+    {
+      className: "bi bi-facebook",
+      href: "https://www.facebook.com/MukeshSharma400",
+      tooltip: "Facebook",
+      ariaLabel: "Facebook",
+    },
+    {
+      className: "bi bi-twitter-x",
+      href: "https://twitter.com/mukesh_sharma36",
+      tooltip: "Twitter / X",
+      ariaLabel: "Twitter / X",
+    },
+    {
+      className: "bi bi-instagram",
+      href: "https://www.instagram.com/mukesh_sharma400",
+      tooltip: "Instagram",
+      ariaLabel: "Instagram",
+    },
+    {
+      className: "bi bi-threads",
+      href: "https://www.threads.net/mukesh_sharma400",
+      tooltip: "Threads",
+      ariaLabel: "Threads",
+    },
+    {
+      className: "bi bi-pinterest",
+      href: "https://www.threads.net/mukesh_sharma400",
+      tooltip: "Pinterest",
+      ariaLabel: "Pinterest",
+    },
+    {
+      className: "bi bi-youtube",
+      href: "https://www.threads.net/mukesh_sharma400",
+      tooltip: "YouTube",
+      ariaLabel: "YouTube",
+    },
+  ];
+
+  const routesData = [
+    { path: "/", label: "Home" },
+    { path: "/filmography", label: "Filmography" },
+    { path: "/gallery", label: "Gallery" },
+    { path: "/media", label: "Media" },
+  ];
 
   return (
     <DisplayWrapper>
@@ -12,21 +68,43 @@ export const Footer = () => {
         <ColumnOne>
           <LogoNameWrapper>
             <Logo src={logo} alt="TJF Motion Pictures" />
-            <Name>TJF Motion Pictures</Name>
+            <Name data-aos="fade-right">TJF Motion Pictures</Name>
           </LogoNameWrapper>
-          <Description>
+          <Description data-aos="fade-right">
             Elevating Short Filmmaking to Art: Our Dedicated Team of Writers,
             Actors, Technicians, and Storytellers Craft Compelling Narratives
             with Precision and Passion.
           </Description>
+          <SocialLinksWrapper>
+            {socialLinks.map((link, index) => (
+              <SocialLink
+                key={index}
+                className={link.className}
+                href={link.href}
+                target="_blank"
+                data-bs-toggle="tooltip"
+                data-bs-title={link.tooltip}
+                data-bs-custom-class="custom-tooltip"
+                aria-label={link.ariaLabel}
+                data-aos="fade-right"
+                data-aos-delay={`${(index + 1) * 100}`}
+              ></SocialLink>
+            ))}
+          </SocialLinksWrapper>
         </ColumnOne>
         <ColumnTwo>
           <PagesHeading>Pages</PagesHeading>
           <PagesWrapper>
-            <Page href="/">Home</Page>
-            <Page href="/filmography">Filmography</Page>
-            <Page href="/gallery">Gallery</Page>
-            <Page href="/media">Media</Page>
+            {routesData.map((page, index) => (
+              <Page
+                key={index}
+                href={page.path}
+                data-aos="fade-up"
+                data-aos-delay={`${(index + 1) * 100}`}
+              >
+                {page.label}
+              </Page>
+            ))}
           </PagesWrapper>
         </ColumnTwo>
       </ColumnsWrapper>
@@ -91,7 +169,7 @@ const Logo = styled(Image)`
 `;
 
 const Name = styled.p`
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 600;
   color: white;
   transition: all 0.5s ease-in-out;
@@ -103,8 +181,30 @@ const Description = styled.p`
   transition: all 0.5s ease-in-out;
 `;
 
+const SocialLinksWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.5s ease-in-out;
+`;
+
+const SocialLink = styled(Link)`
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 50%;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease-in-out;
+`;
+
 const ColumnTwo = styled.div`
-  width: 40%;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -126,10 +226,36 @@ const PagesWrapper = styled.div`
 `;
 
 const Page = styled(Link)`
-  font-size: 16px;
+  position: relative;
+  width: 100%;
+  font-size: 15px;
+  display: flex;
+  gap: 5px;
+  padding: 10px 0px;
   color: white;
   text-decoration: none;
   transition: all 0.5s ease-in-out;
+  border-bottom: 1px solid transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background-color: transparent;
+    width: 0;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  &:hover::before {
+    width: 100%;
+    background-color: white;
+  }
+
+  @media (max-width: 950px) {
+    font-size: 13px;
+  }
 `;
 
 const BottomWrapper = styled.div`

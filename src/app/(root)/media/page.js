@@ -8,7 +8,7 @@ export default function Media() {
   return (
     <BaseLayout>
       <HeaderWrapper>
-        <Header>
+        <Header data-aos="fade-up">
           <Heading>Media</Heading>
           <Description>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi vero
@@ -17,7 +17,7 @@ export default function Media() {
         </Header>
       </HeaderWrapper>
       <MediasWrapper>
-        <MediaWrapper>
+        <MediaWrapper data-aos="fade-up">
           <VideoWrapper>
             <ReactPlayer
               url="https://youtu.be/xy49Qp3Npdo"
@@ -32,7 +32,7 @@ export default function Media() {
             Fest 2019
           </DetailsWrapper>
         </MediaWrapper>
-        <MediaWrapper>
+        <MediaWrapper data-aos="fade-up">
           <VideoWrapper>
             <ReactPlayer
               url="https://youtu.be/xy49Qp3Npdo"
@@ -47,7 +47,7 @@ export default function Media() {
             Fest 2019
           </DetailsWrapper>
         </MediaWrapper>
-        <MediaWrapper>
+        <MediaWrapper data-aos="fade-up">
           <VideoWrapper>
             <ReactPlayer
               url="https://youtu.be/xy49Qp3Npdo"
@@ -62,7 +62,7 @@ export default function Media() {
             Fest 2019
           </DetailsWrapper>
         </MediaWrapper>
-        <MediaWrapper>
+        <MediaWrapper data-aos="fade-up">
           <VideoWrapper>
             <ReactPlayer
               url="https://youtu.be/xy49Qp3Npdo"
@@ -84,7 +84,7 @@ export default function Media() {
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  height: 400px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,7 +97,11 @@ const HeaderWrapper = styled.div`
 
 const Header = styled.div`
   width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   text-align: center;
+  margin-top: 50px;
   transition: all 0.5s ease-in-out;
 `;
 
