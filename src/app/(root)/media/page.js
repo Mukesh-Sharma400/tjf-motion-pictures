@@ -5,10 +5,33 @@ import styled from "styled-components";
 import BaseLayout from "../../components/BaseLayout";
 
 export default function Media() {
+  const mediaItems = [
+    {
+      url: "https://youtu.be/xy49Qp3Npdo",
+      description:
+        "Director Kushal Jadhav receiving the Best Director trophy from Honorable Jury Suvashitraj - Moonwhite Films International Film Fest 2019",
+    },
+    {
+      url: "https://youtu.be/xy49Qp3Npdo",
+      description:
+        "Director Kushal Jadhav receiving the Best Director trophy from Honorable Jury Suvashitraj - Moonwhite Films International Film Fest 2019",
+    },
+    {
+      url: "https://youtu.be/xy49Qp3Npdo",
+      description:
+        "Director Kushal Jadhav receiving the Best Director trophy from Honorable Jury Suvashitraj - Moonwhite Films International Film Fest 2019",
+    },
+    {
+      url: "https://youtu.be/xy49Qp3Npdo",
+      description:
+        "Director Kushal Jadhav receiving the Best Director trophy from Honorable Jury Suvashitraj - Moonwhite Films International Film Fest 2019",
+    },
+  ];
+
   return (
     <BaseLayout>
       <HeaderWrapper>
-        <Header data-aos="fade-up">
+        <Header>
           <Heading>Media</Heading>
           <Description>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi vero
@@ -17,66 +40,20 @@ export default function Media() {
         </Header>
       </HeaderWrapper>
       <MediasWrapper>
-        <MediaWrapper data-aos="fade-up">
-          <VideoWrapper>
-            <ReactPlayer
-              url="https://youtu.be/xy49Qp3Npdo"
-              controls
-              width="100%"
-              height="100%"
-            />
-          </VideoWrapper>
-          <DetailsWrapper>
-            Director Kushal Jadhav while receving Best Director trophy from
-            Honorable Jury Suvashitraj. - Moonwhite Films International Film
-            Fest 2019
-          </DetailsWrapper>
-        </MediaWrapper>
-        <MediaWrapper data-aos="fade-up">
-          <VideoWrapper>
-            <ReactPlayer
-              url="https://youtu.be/xy49Qp3Npdo"
-              controls
-              width="100%"
-              height="100%"
-            />
-          </VideoWrapper>
-          <DetailsWrapper>
-            Director Kushal Jadhav while receving Best Director trophy from
-            Honorable Jury Suvashitraj. - Moonwhite Films International Film
-            Fest 2019
-          </DetailsWrapper>
-        </MediaWrapper>
-        <MediaWrapper data-aos="fade-up">
-          <VideoWrapper>
-            <ReactPlayer
-              url="https://youtu.be/xy49Qp3Npdo"
-              controls
-              width="100%"
-              height="100%"
-            />
-          </VideoWrapper>
-          <DetailsWrapper>
-            Director Kushal Jadhav while receving Best Director trophy from
-            Honorable Jury Suvashitraj. - Moonwhite Films International Film
-            Fest 2019
-          </DetailsWrapper>
-        </MediaWrapper>
-        <MediaWrapper data-aos="fade-up">
-          <VideoWrapper>
-            <ReactPlayer
-              url="https://youtu.be/xy49Qp3Npdo"
-              controls
-              width="100%"
-              height="100%"
-            />
-          </VideoWrapper>
-          <DetailsWrapper>
-            Director Kushal Jadhav while receving Best Director trophy from
-            Honorable Jury Suvashitraj. - Moonwhite Films International Film
-            Fest 2019
-          </DetailsWrapper>
-        </MediaWrapper>
+        {mediaItems.map((item, index) => (
+          <MediaWrapper key={index}>
+            <VideoWrapper>
+              <ReactPlayer
+                url={item.url}
+                controls
+                width="100%"
+                height="100%"
+                config={{ file: { attributes: { preload: "none" } } }}
+              />
+            </VideoWrapper>
+            <DetailsWrapper>{item.description}</DetailsWrapper>
+          </MediaWrapper>
+        ))}
       </MediasWrapper>
     </BaseLayout>
   );
@@ -84,13 +61,15 @@ export default function Media() {
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  height: 350px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("assets/hero-background.png");
+  background: linear-gradient(rgba(0, 0, 0, 0), #0f0f0f),
+    url("assets/media-background.jpeg");
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   transition: all 0.5s ease-in-out;
 `;
@@ -101,7 +80,6 @@ const Header = styled.div`
   flex-direction: column;
   gap: 16px;
   text-align: center;
-  margin-top: 50px;
   transition: all 0.5s ease-in-out;
 `;
 
@@ -121,9 +99,9 @@ const MediasWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: -100px auto 0;
   gap: 3rem;
   padding: 50px 0;
-  background-color: black;
 `;
 
 const MediaWrapper = styled.div`
@@ -131,10 +109,8 @@ const MediaWrapper = styled.div`
   height: 300px;
   display: flex;
   align-items: center;
-  background-color: transparent;
-  border: 2px solid grey;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+  background: #272727;
+  border-radius: 13px;
 `;
 
 const VideoWrapper = styled.div`
@@ -142,7 +118,7 @@ const VideoWrapper = styled.div`
   min-width: 533px;
   height: 100%;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 10px 13px 13px 10px;
   background-color: grey;
 `;
 

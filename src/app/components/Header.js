@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
+import { ContactPopup } from "./ContactPopup";
 import logo from "../../../public/assets/logo.jpg";
 
 export const Header = () => {
   const pathName = usePathname();
+  const [showContactPopup, setShowContactPopup] = useState(false);
 
   const routesData = [
     { path: "/", label: "Home" },
@@ -15,34 +18,50 @@ export const Header = () => {
   ];
 
   return (
-    <DisplayWrapper>
-      <LogoNameWrapper>
-        <Logo src={logo} alt="TJF Motion Pictures" />
-        <Name data-aos="fade-right">TJF Motion Pictures</Name>
-      </LogoNameWrapper>
-      <RoutesWrapper>
-        {routesData.map((page, index) => (
-          <Route
-            key={index}
-            href={page.path}
-            className={pathName === page.path ? "active" : ""}
-            data-aos="fade-left"
-            data-aos-delay={`${(index + 1) * 100}`}
+    <>
+      <DisplayWrapper>
+        <LogoNameWrapper href="/">
+          <Logo src={logo} alt="TJF Motion Pictures" />
+          <Name>TJF Motion Pictures</Name>
+        </LogoNameWrapper>
+        <RoutesWrapper>
+          {routesData.map((page, index) => (
+            <Route
+              key={index}
+              href={page.path}
+              className={`${
+                pathName === page.path || pathName.startsWith(page.path + "/")
+                  ? "active"
+                  : ""
+              }`}
+            >
+              {page.label}
+            </Route>
+          ))}
+          <ContactBtn
+            onClick={() => {
+              setShowContactPopup(true);
+            }}
           >
-            {page.label}
-          </Route>
-        ))}
-
-        <ContactBtn>Let's Talk</ContactBtn>
-      </RoutesWrapper>
-    </DisplayWrapper>
+            Let's Talk
+          </ContactBtn>
+        </RoutesWrapper>
+      </DisplayWrapper>
+      {showContactPopup && (
+        <ContactPopup
+          handleClose={() => {
+            setShowContactPopup(false);
+          }}
+        />
+      )}
+    </>
   );
 };
 
 const DisplayWrapper = styled.div`
   width: 850px;
   position: fixed;
-  top: 40px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -51,7 +70,7 @@ const DisplayWrapper = styled.div`
   padding: 10px;
   border-radius: 40px;
   background: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10.1px);
   -webkit-backdrop-filter: blur(10.1px);
   border: 1px solid rgba(0, 0, 0, 1);
@@ -59,10 +78,11 @@ const DisplayWrapper = styled.div`
   transition: all 0.5s ease-in-out;
 `;
 
-const LogoNameWrapper = styled.div`
+const LogoNameWrapper = styled(Link)`
   display: flex;
   align-items: center;
   gap: 16px;
+  text-decoration: none;
   transition: all 0.5s ease-in-out;
 `;
 
@@ -83,7 +103,7 @@ const Name = styled.p`
 const RoutesWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 5px;
   transition: all 0.5s ease-in-out;
 `;
 
@@ -91,8 +111,19 @@ const Route = styled(Link)`
   position: relative;
   font-size: 16px;
   color: white;
+  height: 40px;
   text-decoration: none;
-  padding-bottom: 3px;
+  padding: 0px 10px 3px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
 
   @media (max-width: 1024px) {
     font-size: 15px;
@@ -106,22 +137,24 @@ const Route = styled(Link)`
     content: "";
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
     height: 2px;
     background-color: white;
     width: 0;
+    transform: translateX(-50%);
     transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
 
   &:hover::before {
-    width: 100%;
+    width: 60%;
   }
 
   &.active {
+    color: #b92314;
     font-weight: 600;
     &::before {
-      width: 100%;
-      background-color: white;
+      width: 60%;
+      background-color: #b92314;
     }
   }
 `;
@@ -135,4 +168,9 @@ const ContactBtn = styled.button`
   height: 40px;
   padding: 0 15px;
   transition: all 0.5s ease-in-out;
+
+  &:hover {
+    color: white;
+    background-color: #191e47;
+  }
 `;

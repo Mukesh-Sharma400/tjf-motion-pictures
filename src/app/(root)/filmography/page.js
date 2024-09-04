@@ -1,74 +1,68 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
 import BaseLayout from "../../components/BaseLayout";
+import film from "../../../../public/assets/film.jpg";
 
 export default function Filmography() {
+  const films = [
+    {
+      href: "/filmography/brief-case",
+      src: film,
+      heading:
+        "A Brief Case - A Hindi, Thriller Short Film | Some secrets can kill",
+      description:
+        "While the city is sleeping, Senior Inspector Deshmukh is secretly out in search of a briefcase. But he cannot accomplish his secret mission without the help of a lock decoding expert Inspector Sadhu. Being loyal to his duty as a cop will Sadhu help Deshmukh in his dark intended mission? And what is so important in that briefcase?",
+    },
+    {
+      href: "/filmography/brief-case",
+      src: film,
+      heading:
+        "A Brief Case - A Hindi, Thriller Short Film | Some secrets can kill",
+      description:
+        "While the city is sleeping, Senior Inspector Deshmukh is secretly out in search of a briefcase. But he cannot accomplish his secret mission without the help of a lock decoding expert Inspector Sadhu. Being loyal to his duty as a cop will Sadhu help Deshmukh in his dark intended mission? And what is so important in that briefcase?",
+    },
+    {
+      href: "/filmography/brief-case",
+      src: film,
+      heading:
+        "A Brief Case - A Hindi, Thriller Short Film | Some secrets can kill",
+      description:
+        "While the city is sleeping, Senior Inspector Deshmukh is secretly out in search of a briefcase. But he cannot accomplish his secret mission without the help of a lock decoding expert Inspector Sadhu. Being loyal to his duty as a cop will Sadhu help Deshmukh in his dark intended mission? And what is so important in that briefcase?",
+    },
+    {
+      href: "/filmography/brief-case",
+      src: film,
+      heading:
+        "A Brief Case - A Hindi, Thriller Short Film | Some secrets can kill",
+      description:
+        "While the city is sleeping, Senior Inspector Deshmukh is secretly out in search of a briefcase. But he cannot accomplish his secret mission without the help of a lock decoding expert Inspector Sadhu. Being loyal to his duty as a cop will Sadhu help Deshmukh in his dark intended mission? And what is so important in that briefcase?",
+    },
+  ];
+
   return (
     <BaseLayout>
       <HeaderWrapper>
-        <Header data-aos="fade-up">
+        <Header>
           <Heading>Filmography</Heading>
           <Description>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi vero
-            autem assumenda natus, ipsam rem voluptatibus
+            Discover a curated list of films, from iconic blockbusters to
+            acclaimed indie gems, showcasing a wide range of cinematic artistry.
           </Description>
         </Header>
       </HeaderWrapper>
       <FilmsWrapper>
-        <Film href="/filmography/brief-case" data-aos="fade-up">
-          <FilmImage></FilmImage>
-          <FilmHeading>
-            A Brief Case - A Hindi, Thriller Short Film | some secrets can kill
-          </FilmHeading>
-          <FilmDescription>
-            While the city is sleeping, Senior Inspector Deshmukh is secretly
-            out in search of a briefcase. But he cannot accomplish his secret
-            mission without the help of a lock decoding expert Inspector Sadhu.
-            Being loyal to his duty as a cop will Sadhu help Deshmukh in his
-            dark intended mission? And what is so important in that briefcase?
-          </FilmDescription>
-        </Film>
-        <Film href="/filmography/brief-case" data-aos="fade-up">
-          <FilmImage></FilmImage>
-          <FilmHeading>
-            A Brief Case - A Hindi, Thriller Short Film | some secrets can kill
-          </FilmHeading>
-          <FilmDescription>
-            While the city is sleeping, Senior Inspector Deshmukh is secretly
-            out in search of a briefcase. But he cannot accomplish his secret
-            mission without the help of a lock decoding expert Inspector Sadhu.
-            Being loyal to his duty as a cop will Sadhu help Deshmukh in his
-            dark intended mission? And what is so important in that briefcase?
-          </FilmDescription>
-        </Film>
-        <Film href="/filmography/brief-case" data-aos="fade-up">
-          <FilmImage></FilmImage>
-          <FilmHeading>
-            A Brief Case - A Hindi, Thriller Short Film | some secrets can kill
-          </FilmHeading>
-          <FilmDescription>
-            While the city is sleeping, Senior Inspector Deshmukh is secretly
-            out in search of a briefcase. But he cannot accomplish his secret
-            mission without the help of a lock decoding expert Inspector Sadhu.
-            Being loyal to his duty as a cop will Sadhu help Deshmukh in his
-            dark intended mission? And what is so important in that briefcase?
-          </FilmDescription>
-        </Film>
-        <Film href="/filmography/brief-case" data-aos="fade-up">
-          <FilmImage></FilmImage>
-          <FilmHeading>
-            A Brief Case - A Hindi, Thriller Short Film | some secrets can kill
-          </FilmHeading>
-          <FilmDescription>
-            While the city is sleeping, Senior Inspector Deshmukh is secretly
-            out in search of a briefcase. But he cannot accomplish his secret
-            mission without the help of a lock decoding expert Inspector Sadhu.
-            Being loyal to his duty as a cop will Sadhu help Deshmukh in his
-            dark intended mission? And what is so important in that briefcase?
-          </FilmDescription>
-        </Film>
+        {films.map((film, index) => (
+          <Film href={film.href} key={index}>
+            <FilmImageWrapper>
+              <FilmImage src={film.src} alt={film.heading} />
+            </FilmImageWrapper>
+            <FilmHeading>{film.heading}</FilmHeading>
+            <FilmDescription>{film.description}</FilmDescription>
+          </Film>
+        ))}
       </FilmsWrapper>
     </BaseLayout>
   );
@@ -76,13 +70,15 @@ export default function Filmography() {
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  height: 350px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("assets/hero-background.png");
+  background: linear-gradient(rgba(0, 0, 0, 0), #0f0f0f),
+    url("assets/filmography-background.jpg");
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   transition: all 0.5s ease-in-out;
 `;
@@ -93,7 +89,6 @@ const Header = styled.div`
   flex-direction: column;
   gap: 16px;
   text-align: center;
-  margin-top: 50px;
   transition: all 0.5s ease-in-out;
 `;
 
@@ -111,11 +106,28 @@ const Description = styled.p`
 
 const FilmsWrapper = styled.div`
   width: 850px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: -100px auto 0;
   padding: 50px 0;
   gap: 3rem;
+  transition: all 0.5s ease-in-out;
+`;
+
+const FilmImageWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+`;
+
+const FilmImage = styled(Image)`
+  width: 100%;
+  height: 235px;
+  overflow: hidden;
+  border-radius: 10px 10px 13px 13px;
+  transition: all 0.5s ease-in-out;
 `;
 
 const Film = styled(Link)`
@@ -125,18 +137,16 @@ const Film = styled(Link)`
   flex-direction: column;
   gap: 10px;
   padding: 0 0 10px;
-  border: 2px solid grey;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+  background: #272727;
+  border-radius: 13px;
   text-decoration: none;
-`;
+  transition: all 0.5s ease-in-out;
 
-const FilmImage = styled.div`
-  width: 100%;
-  height: 235px;
-  overflow: hidden;
-  border-radius: 15px;
-  background-color: grey;
+  &:hover {
+    ${FilmImage} {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const FilmHeading = styled.p`
@@ -146,13 +156,16 @@ const FilmHeading = styled.p`
   overflow: hidden;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  transition: all 0.5s ease-in-out;
 `;
 
 const FilmDescription = styled.p`
   color: lightgray;
+  font-size: 13px;
   padding: 0 10px;
   display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  transition: all 0.5s ease-in-out;
 `;

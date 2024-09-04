@@ -18,21 +18,21 @@ export const Counting = () => {
   return (
     <DisplayWrapper ref={ref}>
       <ContentWrapper>
-        <Number data-aos="fade-up">
+        <Number>
           {isVisible ? <CountUp start={0} end={20} duration={5} /> : "0"}+
         </Number>
         <Label>Awards</Label>
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number data-aos="fade-up">
+        <Number>
           {isVisible ? <CountUp start={0} end={10} duration={5} /> : "0"}+
         </Number>
         <Label>Films</Label>
       </ContentWrapper>
       <Divider />
       <ContentWrapper>
-        <Number data-aos="fade-up">
+        <Number>
           {isVisible ? <CountUp start={0} end={100} duration={5} /> : "0"}+
         </Number>
         <Label>Countries</Label>
@@ -47,7 +47,6 @@ const DisplayWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
   padding: 50px 0;
-  background-color: black;
   transition: all 0.5s ease-in-out;
 `;
 
